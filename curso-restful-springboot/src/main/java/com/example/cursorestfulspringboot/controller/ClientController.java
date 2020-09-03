@@ -45,8 +45,29 @@ public class ClientController {
     }
 
     @GetMapping("/clientes/{codigo}")
-    public String getCliente(@PathVariable int codigo){
-        return "vai retornar UM cliente pelo codigo" + codigo;
+    public Cliente getCliente(@PathVariable int codigo){
+
+        Cliente cli = null;
+
+        for(int i; i<3; i++)
+        {
+            Cliente aux = clientes.get(i);
+            if(aux.codigo == codigo){
+                cli = aux;
+                break;
+            }
+
+        }
+
+        for(Cliente aux : clientes)
+        {
+            if(aux.codigo == codigo){
+                cli = aux;
+                break;
+            }
+        }
+
+        return cli;
     }
     
 }
