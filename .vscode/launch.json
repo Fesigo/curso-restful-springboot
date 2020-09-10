@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CursoRestfulSpringbootApplication<curso-restful-springboot>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.example.cursorestfulspringboot.CursoRestfulSpringbootApplication",
+            "projectName": "curso-restful-springboot",
+            "args": ""
+        }
+    ]
+}
