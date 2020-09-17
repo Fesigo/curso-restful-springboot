@@ -1,7 +1,6 @@
 package com.example.cursorestfulspringboot.repository;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class ClienteRepository {
     
     private List <Cliente> clientes;
+    private int nextCode;
 
     @PostConstruct
     public void criarClientes(){  
@@ -69,9 +69,25 @@ public class ClienteRepository {
 
     public Cliente save(Cliente cliente)
     {
-        cliente.setCodigo(clientes.size() + 1);
+        cliente.setCodigo(nextCode++);
         clientes.add(cliente);
         return cliente;
     }
+
+	public void remove(Cliente cliente) {
+        clientes.remove(cliente);
+	}
+
+	public Cliente update(Cliente cliente) {
+        Cliente aux = getClienteByCodigo(cliente.getCodigo());
+        
+        if(aux != null){
+            aux.setEndereco(cliente.getEndereco());
+            aux.setNome(cliente.getNome());
+            aux.setSaldo(cliente.getSaldo());
+        }
+
+        return aux;
+	}
 
 }
